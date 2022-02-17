@@ -20,6 +20,7 @@ class CreateCursosTable extends Migration
             // el argumento es el nombre de la columna
             $table->string('name');
             $table->text('description');
+            $table->text('categoria');
 
             // crea dos columnas: create_at y update_at
             // Que almacenan respectivamente, la fecha de creación y la última
