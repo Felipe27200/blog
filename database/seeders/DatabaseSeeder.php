@@ -15,9 +15,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // Esta es para ejecutar la clase UserFactory mediante el modelo de User
         // \App\Models\User::factory(10)->create();
-        /* Así se le indica que llame y ejecute el método
-        run() de la clase CuroSeeder */
-        $this->call(CursoSeeder::class);
+
+        /* Se usa el método factory de la clase curso indicandole
+        que cree 50 registros, son el argumento y el método create(),
+        respectivamente. 
+        Esta llamada es más recomendable, ya que todo se puede 
+        ejecutar directamente desde esta clase */
+        Curso::factory(50)->create();
     }
 }
