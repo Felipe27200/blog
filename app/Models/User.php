@@ -55,4 +55,11 @@ class User extends Authenticatable
         realiza la modificación y luego la asigna */
         $this->attributes['name'] = strtolower($value);
     }
+
+    // MÉTODO ACCESOR
+    // El valor se modifica cuando se va a acceder a él
+    public function getNameAttribute($value)
+    {
+        return ucwords($value);
+    }
 }
