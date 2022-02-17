@@ -8,6 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+// Se importa esta case necesaria para poder hacer uso de los mutadores
+// y modificar el valor que entra en las tablas
+// use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Model;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -41,4 +46,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // El método se debe hacer referencia al atributo que se quiere manipular
+    public function setNameAttribute ($value) // $value recupera el valor para poder manipularlo
+    {
+        // Convierte en minúsculas el valor
+        /* Usa la propiedad atributtes del objeto para acceder al campo, primero 
+        realiza la modificación y luego la asigna */
+        $this->attributes['name'] = strtolower($value);
+    }
 }
