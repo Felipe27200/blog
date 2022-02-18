@@ -16,7 +16,9 @@
         @method('put')
         <label for="">Nombre: </label>
         <br>
-        <input type="text" name="name" value="{{$curso->name}}">
+        {{-- El segundo argumento establece el valor que puede llegar a tener old()
+            al momento de iniciar --}}
+        <input type="text" name="name" value="{{old('name', $curso->name)}}">
 
         @error('name')
             <br>
@@ -28,12 +30,20 @@
 
         <label for="">Descripción: </label>
         <br>
-        <textarea name="description" id="" rows="5">{{$curso->description}}</textarea>
+        <textarea name="description" id="" rows="5">{{old('description', $curso->description)}}</textarea>
+        @error('description')
+            <br>
+            <small>{{$message}}</small>
+        @enderror
         <br><br>
 
         <label for="">Categoría: </label>
         <br>
-        <input type="text" name="categoria" value="{{$curso->categoria}}">
+        <input type="text" name="categoria" value="{{old('categoria', $curso->categoria)}}">
+        @error('categoria')
+            <br>
+            <small>{{$message}}</small>
+        @enderror
         <br><br>
 
         <input type="submit" value="Actualizar Formulario">

@@ -90,6 +90,15 @@ class CursoController extends Controller
 
     // MÉTODO PARA EDITAR LOS DATOS DE UN REGISTRO
     public function update(Request $request, Curso $curso){
+        $request->validate([
+            // Nombre campo | validación
+            // El carácter "|" permite añadir condiciones de validación
+            // en este caso indica que al longitud máxima de name es de 10
+            'name' => 'required|max:10',
+            'description' => 'required|min:10',
+            'categoria' => 'required'
+        ]);
+
         $curso->name = $request->name;
         $curso->description = $request->description;
         $curso->categoria = $request->categoria;
@@ -97,7 +106,17 @@ class CursoController extends Controller
         // Guarda los datos en la BD
         $curso->save();
 
+        /* Una vez ejecutada la acción debe redireccionar a la 
+        ruta indicada */
         return redirect()->route('cursos.show', $curso);
+    }
+
+    public function destroy (Curso $curso){
+        /* Se recupera el id y se crea el objeto con los datos del 
+        registro, luego se usa el método delete() para eliminarlo */
+        $curso->delete();
+
+        return redirect()->route('cursos.index');
     }
     // Estos métodos pueden tener ser nombrados de cualquier forma
 }

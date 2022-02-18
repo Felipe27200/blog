@@ -49,3 +49,9 @@ Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('curso
 
 /* put() es el método recomendado por laravel cuando se quieren editar datos */
 Route::put('curso/{curso}', [CursoController::class, 'update'])->name('cursos.update');
+
+
+/* Esta ruta se encarga de eliminar un registro de la BD, laravel recomienda usar el 
+método delete() para realizar esta acción.
+Por convención el método en el controlador se debe llamar destroy() */
+Route::delete('cursos/{curso}', [CursoController::class, 'destroy'])->name('cursos.destroy');
