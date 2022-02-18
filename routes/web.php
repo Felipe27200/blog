@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursoController;
+use App\Models\Curso;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,11 @@ se usará y el segundo elemento es la función que se invocará */
 
 Route::get('cursos', [CursoController::class, 'index'])->name('cursos.index');// name() le define un nombre identificativo a la ruta
 Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.create');// name() le define un nombre identificativo a la ruta
+
+// Esta ruta post se encarga de recibir la entrada del formulario en la vista create
+// para esto se asigna la ruta de la vista como primer argumento, segundo se define 
+// a quién se dirige, el método store() del controlador CursoController
+// y por último se le da un nombre a esta ruta
+Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store');
+
 Route::get('cursos/{curso}', [CursoController::class, 'show'])->name('cursos.show');// name() le define un nombre identificativo a la ruta
