@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Curso;
 use Illuminate\Http\Request;
 
 class CursoController extends Controller
@@ -11,10 +12,14 @@ class CursoController extends Controller
     // MÉTODO ENCARGADO DE GESTIONAR LA PÁG. PRINCIPAL
     public function index()
     {
+        // Se usa el método all() del modelo para
+        // obtener todos los registros de la tabla cursos
+        $cursos = Curso::all();
+
         // Así cuando entre a la función redirigira
         // a la vista index.php, el punto después de curso indica que este
         // es una carpeta
-        return view('cursos.index');
+        return view('cursos.index', compact('cursos'));
     }
     
     // MÉTODO ENCARGADO DE MOSTRAR LOS FORMULARIOS DE INSERCIÓN

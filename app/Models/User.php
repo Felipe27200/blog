@@ -58,6 +58,7 @@ class User extends Authenticatable
 
     // MÉTODO ACCESOR
     // El valor se modifica cuando se va a acceder a él
+    // No modifica el campo, sólo su valor de presentación
     public function getNameAttribute($value)
     {
         return ucwords($value);
