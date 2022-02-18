@@ -38,6 +38,19 @@ class CursoController extends Controller
 
     // Request recibe los datos de al solicitud, que es lo que significa
     public function store(Request $request){
+
+        // Validar formularios mediante laravel
+
+        // Este método se encarga de validar los valores en los formularios
+        // detiene el flujo del programa para hacerlo, en caso de que no se 
+        // validen retorna al formulario
+        $request->validate([
+            // Nombre campo | validación
+            'name' => 'required',
+            'description' => 'required',
+            'categoria' => 'required'
+        ]);
+
         $curso = new Curso();
 
         // Se almacena los valores del request en el objeto

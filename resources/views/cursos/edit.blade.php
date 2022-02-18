@@ -17,7 +17,14 @@
         <label for="">Nombre: </label>
         <br>
         <input type="text" name="name" value="{{$curso->name}}">
-        <br><br>
+
+        @error('name')
+            <br>
+            <small>{{$message}}</small>
+            <br>
+        @enderror
+        <br>        
+        <br>
 
         <label for="">Descripción: </label>
         <br>

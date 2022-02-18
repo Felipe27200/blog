@@ -13,16 +13,34 @@
         <label for="">Nombre: </label>
         <br>
         <input type="text" name="name">
+
+        {{-- La directiva atrapa el error si es que ocurre uno en la validación --}}
+        @error('name')
+            {{-- Así imprimira el mensaje en caso de generarse un error --}}
+            <br>
+            <small>{{$message}}</small>
+        @enderror   
         <br><br>
 
         <label for="">Descripción: </label>
         <br>
         <textarea name="description" id="" rows="5"></textarea>
+
+        @error('description')
+            <br>
+            <small>{{$message}}</small>
+            @enderror
         <br><br>
 
         <label for="">Categoría: </label>
         <br>
         <input type="text" name="categoria">
+
+        @error('categoria')
+            <br>
+            <small>{{$message}}</small>
+            @enderror
+
         <br><br>
 
         <input type="submit" value="Enviar Formulario">
