@@ -14,9 +14,12 @@
         @foreach ($cursos as $curso)
             {{-- Así se obtiene el valor de los atributos en la variable
                 y se imprimen en el navegador --}}
-            <li>{{$curso->name}}</li>
-            <li>{{$curso->description}}</li>
-            <li>{{$curso->categoria}}</li>
+            <li>
+                {{-- Apunta a la vista show y le envía el id del elemento actual, 
+                    los argumentos son: 1. ruta de la vista 2. valor que se le envía --}}
+                <a href="{{route('cursos.show', $curso->id)}}">{{$curso->name}}</a>
+            </li>
+
         @endforeach
     </ul>
     {{-- Este método permite recorrer las paginaciones de los 

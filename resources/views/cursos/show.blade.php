@@ -1,9 +1,11 @@
 @extends('layouts.plantilla')
 
-@section('title', 'Curso '.$curso)
+@section('title', 'Curso '.$curso->name)
     
 @section('content')
-    
-    <h1>El curso es: {{$curso}}</h1>
+    <a href="{{route('cursos.index')}}">Volver a cursos</a>
+    <h1>Bienvenido al curso {{$curso->name}}</h1>
+    <p><strong>Categoria: </strong>{{$curso->categoria}}</p>
+    <p>{{$curso->description}}</p>
 
 @endsection

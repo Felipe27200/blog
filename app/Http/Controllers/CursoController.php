@@ -32,9 +32,12 @@ class CursoController extends Controller
     }
 
     // MÉTODO QUE MUESTRA UN ELEMENTO EN PARTICULAR
-    public function show($curso)
+    public function show($id)
     {
-        return view('cursos.show', ['curso' => $curso ]);
+        // Busca el elemento con que corresponda con ese id
+        $curso = Curso::find($id);
+
+        return view('cursos.show', compact('curso'));
 
     }
 
