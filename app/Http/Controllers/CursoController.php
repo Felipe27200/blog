@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Curso;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 class CursoController extends Controller
 {
@@ -57,20 +58,33 @@ class CursoController extends Controller
     }
 
     // MÉTODO QUE MUESTRA UN ELEMENTO EN PARTICULAR
-    public function show($id)
+    public function show(Curso $curso)
     {
-        // Busca el elemento con que corresponda con ese id
-        $curso = Curso::find($id);
+        // // Busca el elemento con que corresponda con ese id
+        // $curso = Curso::find($id);
 
         return view('cursos.show', compact('curso'));
-
     }
 
-    // MÉTODO PARA EDITAR DATOS
-    public function edit($id){
-        $curso = Curso::find($id);
+    // MÉTODO PARA RECIBIR DATOS A EDITAR
 
-        return $curso;
+    /* Si se le antepone el nombre de la clase, Laravel lo toma 
+    como que se quiere que curso (argumento) sea una instancia de Curso, 
+    que tenga el id correspondiente del valor que recibe*/
+    public function edit(Curso $curso){
+        return view('cursos.edit', compact('curso'));
+    }
+
+    // MÉTODO PARA EDITAR LOS DATOS DE UN REGISTRO
+    public function update(Request $request, Curso $curso){
+        $curso->name = $request->name;
+        $curso->description = $request->description;
+        $curso->categoria = $request->categoria;
+
+        // Guarda los datos en la BD
+        $curso->save();
+
+        return redirect()->route('cursos.show', $curso);
     }
     // Estos métodos pueden tener ser nombrados de cualquier forma
 }

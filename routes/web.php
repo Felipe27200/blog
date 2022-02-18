@@ -37,9 +37,15 @@ Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.cr
 Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store');
 
 // la llaves indican un valor de variable que será enviado
-Route::get('cursos/{id}', [CursoController::class, 'show'])->name('cursos.show');// name() le define un nombre identificativo a la ruta
+Route::get('cursos/{curso}', [CursoController::class, 'show'])->name('cursos.show');// name() le define un nombre identificativo a la ruta
 
 // Ruta para modificar un registro
 
 // Se le agrega el /edit para distinguirla de la ruta de arriba
-Route::get('cursos/{id}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
+// El nombre de la variable de la ruta debe coincidir con la del método
+Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
+
+/* Ruta para procesar los datos a editar */
+
+/* put() es el método recomendado por laravel cuando se quieren editar datos */
+Route::put('curso/{curso}', [CursoController::class, 'update'])->name('cursos.update');
