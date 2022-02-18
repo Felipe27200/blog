@@ -36,4 +36,10 @@ Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.cr
 // y por último se le da un nombre a esta ruta
 Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store');
 
-Route::get('cursos/{curso}', [CursoController::class, 'show'])->name('cursos.show');// name() le define un nombre identificativo a la ruta
+// la llaves indican un valor de variable que será enviado
+Route::get('cursos/{id}', [CursoController::class, 'show'])->name('cursos.show');// name() le define un nombre identificativo a la ruta
+
+// Ruta para modificar un registro
+
+// Se le agrega el /edit para distinguirla de la ruta de arriba
+Route::get('cursos/{id}/edit', [CursoController::class, 'edit'])->name('cursos.edit');

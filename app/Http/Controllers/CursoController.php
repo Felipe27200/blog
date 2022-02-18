@@ -66,5 +66,11 @@ class CursoController extends Controller
 
     }
 
+    // MÉTODO PARA EDITAR DATOS
+    public function edit($id){
+        $curso = Curso::find($id);
+
+        return $curso;
+    }
     // Estos métodos pueden tener ser nombrados de cualquier forma
 }
