@@ -26,6 +26,6 @@ necesario usar rutas diferentes */
 en el array del segundo argumento, se indica el controlador que 
 se usará y el segundo elemento es la función que se invocará */
 
-Route::get('cursos', [CursoController::class, 'index']);
-Route::get('cursos/create', [CursoController::class, 'create']);
-Route::get('cursos/{curso}', [CursoController::class, 'show']);
+Route::get('cursos', [CursoController::class, 'index'])->name('cursos.index');// name() le define un nombre identificativo a la ruta
+Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.create');// name() le define un nombre identificativo a la ruta
+Route::get('cursos/{curso}', [CursoController::class, 'show'])->name('cursos.show');// name() le define un nombre identificativo a la ruta

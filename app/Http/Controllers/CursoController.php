@@ -12,9 +12,12 @@ class CursoController extends Controller
     // MÉTODO ENCARGADO DE GESTIONAR LA PÁG. PRINCIPAL
     public function index()
     {
-        // Se usa el método all() del modelo para
+        // Se usa el método paginate() del modelo para
         // obtener todos los registros de la tabla cursos
-        $cursos = Curso::all();
+        // De esta forma se muestran los cursos paginados cada 15 registros
+        // localhost/blog/public/cursos?page=numero || Así se accede a los 
+        // siguientes registros paginados
+        $cursos = Curso::paginate();
 
         // Así cuando entre a la función redirigira
         // a la vista index.php, el punto después de curso indica que este
